@@ -13,10 +13,10 @@ import { ProductService } from '../product.service';
 })
 export class ProductComponent implements OnInit {
 
-  listProducts: any;
-  form: boolean = false;
-  product!: Product;
-  closeResult!: string;
+  listProducts : any; 
+  form : boolean = false;
+   product!: Product;
+   closeResult! : string;
 
   constructor(private productService: ProductService, private modalService: NgbModal) { }
 
@@ -41,7 +41,7 @@ export class ProductComponent implements OnInit {
       this.form = false;
     });
   }
-
+  
   editProduct(product: Product) {
     this.productService.editProduct(product).subscribe();
   }

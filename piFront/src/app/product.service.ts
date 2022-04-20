@@ -21,7 +21,7 @@ export class ProductService {
   }
 
   deleteProduct(idProduct: any) {
-    return this.httpClient.delete(`${this.API_URL}/delete-product${idProduct}`)
+    return this.httpClient.delete(`${this.API_URL}/delete-product/${idProduct}`)
   }
 
 }
