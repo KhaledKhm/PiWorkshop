@@ -1,0 +1,51 @@
+<div class="row">
+    <form *ngIf="form">
+        <div class="row" class="col-md-6">
+            <input type="text" placeholder="Product Name" [(ngModel)]="product.title"
+            [ngModelOptions]="{standalone: true}">
+        </div>
+        <div class="row" class="col-md-6">
+            <input type="number" placeholder="Price" [(ngModel)]="product.price"
+            [ngModelOptions]="{standalone: true}">
+        </div>
+        <div class="row" class="col-md-6">
+            <input type="number" placeholder="Quantity" [(ngModel)]="product.quantity"
+            [ngModelOptions]="{standalone: true}">
+        </div>
+        <br>
+        <button type="button" class="btn btn-success" (click)="addProduct(product)">Add</button>
+        <button type="button" class="btn btn-primary" (click)="closeForm()">Cancel</button>
+        
+    </form>
+</div>
+
+
+<p>product works!</p>
+
+<div class="row">
+    <div class="col-md-12">
+        <table class="table">
+            <thead style="background-color: rgb(192, 183, 183);">
+                <th>Name</th>
+                <th>Price</th>
+                <th>Quantity</th>
+                <th>Action</th>
+            </thead>
+            <tbody>
+                <tr *ngFor='let p of listProducts'>
+                    <td>{{p.title}}</td>
+                    <td>{{p.price}}</td>
+                    <td>{{p.quantity}}</td>
+                    <td><button type="button" class="btn btn-outline-primary" 
+                        (click)="open(mymodal)">edit</button>
+                        <ng-template #mymodal let-modal>
+                            ...
+                        </ng-template>
+                        <button type="button" class="btn btn-outline-danger"
+                        (click)="deleteProduct(p.id_product)">delete</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
