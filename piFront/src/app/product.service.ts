@@ -1,12 +1,11 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Product } from './product';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ProductService {
-  readonly API_URL = 'http://localhost:8080';
+  readonly API_URL = 'http://localhost:8089';
   constructor(private httpClient: HttpClient) { }
 
   getAllProducts() {

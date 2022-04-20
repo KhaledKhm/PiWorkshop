@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { ModalDismissReasons, NgbModal } from '@ng-bootstrap/ng-bootstrap';
+
 import { Product } from '../product';
 import { ProductService } from '../product.service';
-import { NgbModal, NgbActiveModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
-import { throws } from 'assert';
+
 
 
 @Component({
@@ -13,7 +14,7 @@ import { throws } from 'assert';
 export class ProductComponent implements OnInit {
 
   listProducts: any;
-  from: boolean = false;
+  form: boolean = false;
   product!: Product;
   closeResult!: string;
 
@@ -37,7 +38,7 @@ export class ProductComponent implements OnInit {
   addProduct(p: any){
     this.productService.addProduct(p).subscribe(() => {
       this.getAllProducts();
-      this.from = false;
+      this.form = false;
     });
   }
 
@@ -48,5 +49,28 @@ export class ProductComponent implements OnInit {
   deleteProduct(idProduct: any) {
     this.productService.deleteProduct(idProduct).subscribe(()=> this.getAllProducts());
   }
+
+  open(content: any) {
+    this.modalService.open(content, {ariaLabelledBy: 'modal-basic-title'}).result.then((result) => {
+      this.closeResult = `Closed with: ${result}`;
+    }, (reason) => {
+      this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
+    });
+    }
+    private getDismissReason(reason: any): string {
+      if (reason === ModalDismissReasons.ESC) {
+        return 'by pressing ESC';
+      } else if (reason === ModalDismissReasons.BACKDROP_CLICK) {
+        return 'by clicking on a backdrop';
+      } else {
+        return  `with: ${reason}`;
+      }
+    }
+    closeForm(){
+  
+    }
+    cancel(){
+      this.form = false;
+    }
 
 }
