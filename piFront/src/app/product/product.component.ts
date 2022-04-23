@@ -36,14 +36,20 @@ export class ProductComponent implements OnInit {
   }
 
   addProduct(p: any){
+    
+    console.log("add" +p.price);
+    console.log("add" +p);
     this.productService.addProduct(p).subscribe(() => {
       this.getAllProducts();
       this.form = false;
     });
   }
   
-  editProduct(product: Product) {
-    this.productService.editProduct(product).subscribe();
+  editProduct(pro: Product) {
+    console.log("edit " +pro.price);
+    
+    console.log(pro);
+    this.productService.editProduct(pro).subscribe();
   }
 
   deleteProduct(idProduct: any) {

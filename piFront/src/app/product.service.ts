@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Product } from './product';
 
 @Injectable({
   providedIn: 'root'
@@ -16,7 +17,9 @@ export class ProductService {
     return this.httpClient.post(`${this.API_URL}/add-product`, product)
   }
 
-  editProduct(product: any) {
+  editProduct(product: Product) {
+    console.log("Service")
+    console.log(product)
     return this.httpClient.put(`${this.API_URL}/edit-product`, product)
   }
 

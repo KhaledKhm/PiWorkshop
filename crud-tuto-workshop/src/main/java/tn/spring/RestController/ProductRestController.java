@@ -9,9 +9,10 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import io.swagger.v3.oas.annotations.parameters.RequestBody;
+
 import tn.spring.Service.IProductService;
 import tn.spring.entity.Product;
 
@@ -41,6 +42,7 @@ public class ProductRestController {
 	// http://localhost:8081/edit-products
 	@PutMapping("/edit-product")
 	public Product editProduct(@RequestBody Product p){
+		//System.err.println("id product "+p.getPrice());
 		return productService.editProduct(p);
 	}
 	
